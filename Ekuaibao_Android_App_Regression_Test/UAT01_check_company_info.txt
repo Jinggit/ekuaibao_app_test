@@ -1,0 +1,28 @@
+*** Settings ***
+Resource          all_pages_keywords.txt
+
+*** Test Cases ***
+check full company info
+    [Tags]    init
+    StartAppReset
+    Wait Until Page Contains Element    //android.widget.TextView[@text="让报销成为快事一件"]
+    Login    ${MEMBER_ADMIN_ACCOUNT}    ${MEMBER_ADMIN_PASSWORD}    #13718470010
+    Read Later
+    App Upgrade
+    Wait Until Page Contains Element    //android.widget.TextView[@text="易快报"]
+    Click Setting Button
+    Click My Company
+    Close Company
+    Confirmation Cancel
+    Company Name Should Be    北京合思有限公司
+    Company ID Should Be    ID：vbvbbgghhf
+    Company Phone Should Be    13718470010
+    Company Fax Should Be    40088888888
+    Company Address Should Be    北京王府井大街六马路
+    [Teardown]    Close Application and Screenshot Comparison
+
+Sandbox
+    [Tags]    stage
+    ${jiasd}=    Remove String Using Regexp    assa (30 )    \\D
+
+*** Keywords ***

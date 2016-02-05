@@ -1,0 +1,27 @@
+*** Settings ***
+Resource          all_pages_keywords.txt
+
+*** Test Cases ***
+Init
+    [Tags]    init
+    StartAppReset
+    Wait Until Page Contains Element    //android.widget.TextView[@text="让报销成为快事一件"]
+    Login    ${MEMBER_ADMIN_ACCOUNT}    ${MEMBER_ADMIN_PASSWORD}    #13718470010
+    Read Later
+    App Upgrade
+    Wait Until Page Contains Element    //android.widget.TextView[@text="易快报"]
+    Click Setting Button
+    Click My Company
+    Click Add Member Icon
+    Run Keyword and Ignore Error    Click Stop Invitation
+    Create Invitation Link
+    Click Stop Invitation
+    Create Invitation Link
+    Click Share Wechat
+    [Teardown]    Close Application and Screenshot Comparison
+
+Sandbox
+    [Tags]    stage
+    ${jiasd}=    Remove String Using Regexp    assa (30 )    \\D
+
+*** Keywords ***

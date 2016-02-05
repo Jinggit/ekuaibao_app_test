@@ -1,0 +1,1491 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+html {
+  font-family: Arial,Helvetica,sans-serif;
+  background-color: white;
+  color: black;
+}
+table {
+  border-collapse: collapse;
+  empty-cells: show;
+  margin: 1em 0em;
+  border: 1px solid black;
+}
+th, td {
+  border: 1px solid black;
+  padding: 0.1em 0.2em;
+  height: 1.5em;
+  width: 12em;
+}
+td.colspan4, th.colspan4 {
+    width: 48em;
+}
+td.colspan3, th.colspan3 {
+    width: 36em;
+}
+td.colspan2, th.colspan2 {
+    width: 24em;
+}
+th {
+  background-color: rgb(192, 192, 192);
+  color: black;
+  height: 1.7em;
+  font-weight: bold;
+  text-align: center;
+  letter-spacing: 0.1em;
+}
+td.name {
+  background-color: rgb(240, 240, 240);
+  letter-spacing: 0.1em;
+}
+td.name, th.name {
+  width: 10em;
+}
+</style>
+<title>Hybrid Public Resource</title>
+</head>
+<body>
+<h1>Hybrid Public Resource</h1>
+<table border="1" id="setting">
+<tr>
+<th class="name" colspan="5">Settings</th>
+</tr>
+<tr>
+<td class="name">Resource</td>
+<td>hybrid_common_resource.html</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>AppiumLibrary</td>
+<td>run_on_failure=AppiumLibrary.Capture Page Screenshot</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>String</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>OperatingSystem</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</table>
+<table border="1" id="keyword">
+<tr>
+<th class="name" colspan="5">Keywords</th>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Wait and Run Keyword">Wait and Run Keyword</a></td>
+<td>[Arguments]</td>
+<td>${operation}</td>
+<td>${locator}</td>
+<td>@{rest_arg}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>AppiumLibrary.Get Source</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>AppiumLibrary.Wait Until Page Contains Element</td>
+<td>${locator}</td>
+<td>${TIMEOUT}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Run Keyword</td>
+<td>${operation}</td>
+<td>${locator}</td>
+<td>@{rest_arg}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_SleepApp">SleepApp</a></td>
+<td>sleep</td>
+<td>5</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Swipe Element Vertical From Bottom Hybrid">Swipe Element Vertical From Bottom Hybrid</a></td>
+<td>[Arguments]</td>
+<td>${locator}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${coordinator}=</td>
+<td>Get Location Coordinator</td>
+<td>${locator}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${size}=</td>
+<td>Get Element Size</td>
+<td>${locator}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${position}=</td>
+<td>Calculate Offset</td>
+<td>${coordinator}</td>
+<td>${size}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>0.5,0.5</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${xy}=</td>
+<td>Split String</td>
+<td>${position}</td>
+<td>,</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${x}=</td>
+<td>Set Variable</td>
+<td>${xy[0]}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${y}=</td>
+<td>Set Variable</td>
+<td>${xy[1]}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>AppiumLibrary.Swipe</td>
+<td>${x}</td>
+<td>${y}</td>
+<td>${x}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>0.5</td>
+<td>2000</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Swipe Element Horizontal From Right Hybrid">Swipe Element Horizontal From Right Hybrid</a></td>
+<td>[Arguments]</td>
+<td>${locator}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${coordinator}=</td>
+<td>Get Location Coordinator</td>
+<td>${locator}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${size}=</td>
+<td>Get Element Size</td>
+<td>${locator}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${position}=</td>
+<td>Calculate Offset</td>
+<td>${coordinator}</td>
+<td>${size}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>0.75,0.75</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${xy}=</td>
+<td>Split String</td>
+<td>${position}</td>
+<td>,</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${x}=</td>
+<td>Set Variable</td>
+<td>${xy[0]}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${y}=</td>
+<td>Set Variable</td>
+<td>${xy[1]}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>AppiumLibrary.Swipe</td>
+<td>${x}</td>
+<td>${y}</td>
+<td>0.05</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${y}</td>
+<td>2000</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Scroll Until Element Visiable">Scroll Until Element Visiable</a></td>
+<td>[Arguments]</td>
+<td>${locator}</td>
+<td>${retry}</td>
+<td>${internal}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>: FOR</td>
+<td>${index}</td>
+<td>IN RANGE</td>
+<td>${retry}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>AppiumLibrary.Get Source</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>${status}</td>
+<td>${value} =</td>
+<td>Run Keyword And Ignore Error</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>Wait Until Page Contains Element</td>
+<td>${locator}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>${internal}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>Run Keyword If</td>
+<td>'${status}' == 'PASS'</td>
+<td>Exit For Loop</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>AppiumLibrary.Swipe</td>
+<td>0.5</td>
+<td>0.9</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>0.5</td>
+<td>0.1</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>3000</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Add Items">Add Items</a></td>
+<td>[Arguments]</td>
+<td>${qty}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Repeat Keyword</td>
+<td>${qty}</td>
+<td>AppiumLibrary.Click Element</td>
+<td>xpath=//android.view.View[@content-desc="+"]</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>SleepApp</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Del Items">Del Items</a></td>
+<td>[Arguments]</td>
+<td>${qty}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Repeat Keyword</td>
+<td>${qty}</td>
+<td>AppiumLibrary.Click Element</td>
+<td>xpath=//android.view.View[@content-desc="-"]/../android.widget.Image[1]</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>SleepApp</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Remove">Remove</a></td>
+<td>Wait and Run Keyword</td>
+<td>xpath=//android.view.View[@content-desc="remove"]</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Input Text Label">Input Text Label</a></td>
+<td>[Arguments]</td>
+<td>${field_name}</td>
+<td>${field_value}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>ScrollandInput Android</td>
+<td>//android.view.View[contains(@content-desc,"${field_name}")]/following::node()[1]</td>
+<td>${field_value}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Click Element Label">Click Element Label</a></td>
+<td>[Arguments]</td>
+<td>${field_name}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>ScrollandTap Android</td>
+<td>xpath=//android.view.View[contains(@content-desc,"${field_name}")]/following::node()[1]</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Close The Application">Close The Application</a></td>
+<td>Run Keyword And Ignore Error</td>
+<td>LogoutApp Teardown</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Close Application</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>Force Stop App</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_ScrollandInput Android">ScrollandInput Android</a></td>
+<td>[Arguments]</td>
+<td>${locator}</td>
+<td>${text}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>ScrollIntoView Android</td>
+<td>${locator}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>AppiumLibrary.Get Source</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>AppiumLibrary.Input Text</td>
+<td>${locator}</td>
+<td>${text}</td>
+<td>${DEVICE_NAME}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>AppiumLibrary.Go Back</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_ScrollandTap Android">ScrollandTap Android</a></td>
+<td>[Arguments]</td>
+<td>${locator}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>ScrollIntoView Android</td>
+<td>${locator}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Sleep</td>
+<td>5</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>AppiumLibrary.Get Source</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Sleep</td>
+<td>5</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Tap Element Android</td>
+<td>${locator}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Tap Element Android">Tap Element Android</a></td>
+<td>[Arguments]</td>
+<td>${locator}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${coordinator}=</td>
+<td>Get Location Coordinator</td>
+<td>${locator}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${size}=</td>
+<td>Get Element Size</td>
+<td>${locator}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${position}=</td>
+<td>Calculate Offset</td>
+<td>${coordinator}</td>
+<td>${size}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>0.1,0.1</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Tap Coordinator</td>
+<td>${position}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Log</td>
+<td>Clicking</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_ScrollIntoView Android">ScrollIntoView Android</a></td>
+<td>[Arguments]</td>
+<td>${locator}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>AppiumLibrary.Wait Until Page Contains Element</td>
+<td>${locator}</td>
+<td>${TIMEOUT}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${size}=</td>
+<td>get screen size</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${screen_height}=</td>
+<td>Convert To Integer</td>
+<td>${size['height']}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${coordinator}=</td>
+<td>Get Location Coordinator</td>
+<td>${locator}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${x}</td>
+<td>${y}=</td>
+<td>Split String</td>
+<td>${coordinator}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>,</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${locator_y_coordinator}=</td>
+<td>Convert To Integer</td>
+<td>${y}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${times_floor}=</td>
+<td>Run Keyword If</td>
+<td>${locator_y_coordinator} &gt; ${screen_height}</td>
+<td>Evaluate</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>math.floor(float(${locator_y_coordinator})/float(${screen_height}))</td>
+<td>math</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>ELSE</td>
+<td>Set Variable</td>
+<td>${1}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>${times_floor}=</td>
+<td>Convert To String</td>
+<td>${times_floor}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${rest_move}=</td>
+<td>Run Keyword If</td>
+<td>(((float(${locator_y_coordinator})/float(${screen_height})-${times_floor}))+0.45) &lt; 0.99</td>
+<td>Evaluate</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>0.99-(((float(${locator_y_coordinator})/float(${screen_height})-${times_floor}))+0.45)</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>ELSE</td>
+<td>Evaluate</td>
+<td>1.99-(((float(${locator_y_coordinator})/float(${screen_height})-${times_floor}))+0.45)</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${times}=</td>
+<td>Run Keyword If</td>
+<td>(((float(${locator_y_coordinator})/float(${screen_height})-${times_floor}))+0.45) &gt; 0.99</td>
+<td>Set Variable</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${times_floor+1}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>ELSE</td>
+<td>Set Variable</td>
+<td>${times_floor}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>${rest_move}=</td>
+<td>Evaluate</td>
+<td>0.99-(((float(${locator_y_coordinator})/float(${screen_height})-${times_floor}))+0.4)</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>${rest_move}=</td>
+<td>Evaluate</td>
+<td>1.99-(((float(${locator_y_coordinator})/float(${screen_height})-${times_floor}))+0.4)</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${times}=</td>
+<td>Convert To Integer</td>
+<td>${times}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${rest_move}=</td>
+<td>Convert To Number</td>
+<td>${rest_move}</td>
+<td>2</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Repeat Doing</td>
+<td>${times-1}</td>
+<td>3</td>
+<td>Swipe</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>0.5</td>
+<td>0.99</td>
+<td>0.5</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>0.01</td>
+<td>4000</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>Repeat Keyword</td>
+<td>${times-1}</td>
+<td>Swipe</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>0.5</td>
+<td>0.99</td>
+<td>0.5</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>0.01</td>
+<td>4000</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Run Keyword If</td>
+<td>${locator_y_coordinator} &gt; ${screen_height}</td>
+<td>Swipe</td>
+<td>0.5</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>0.99</td>
+<td>0.5</td>
+<td>${rest_move}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>4000</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Swipe Element Vertical From Top Hybrid">Swipe Element Vertical From Top Hybrid</a></td>
+<td>[Arguments]</td>
+<td>${locator}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${coordinator}=</td>
+<td>Get Location Coordinator</td>
+<td>${locator}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${size}=</td>
+<td>Get Element Size</td>
+<td>${locator}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${position}=</td>
+<td>Calculate Offset</td>
+<td>${coordinator}</td>
+<td>${size}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>0.5,0.5</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${xy}=</td>
+<td>Split String</td>
+<td>${position}</td>
+<td>,</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${x}=</td>
+<td>Set Variable</td>
+<td>${xy[0]}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${y}=</td>
+<td>Set Variable</td>
+<td>${xy[1]}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>AppiumLibrary.Swipe</td>
+<td>${x}</td>
+<td>${y}</td>
+<td>${x}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>1500</td>
+<td>1000</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Click Shopping Bag">Click Shopping Bag</a></td>
+<td>Wait and Run Keyword</td>
+<td>xpath=//android.widget.ImageView[contains(@resource-id, "cart_button")]</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>SleepApp</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Repeat Doing">Repeat Doing</a></td>
+<td>[Arguments]</td>
+<td>${times}</td>
+<td>${interval}</td>
+<td>${keyword}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>@{rest}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>: FOR</td>
+<td>${index}</td>
+<td>IN RANGE</td>
+<td>1</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${times+1}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>sleep</td>
+<td>${interval}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>Run Keyword</td>
+<td>${keyword}</td>
+<td>@{rest}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>Log</td>
+<td>"${keyword}" ${index}/${times}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Lock and Unlock">Lock and Unlock</a></td>
+<td>Lock</td>
+<td>5</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Wakeup</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Swipe To Unlock</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Wait Until Element Disappeared">Wait Until Element Disappeared</a></td>
+<td>[Arguments]</td>
+<td>${locator}</td>
+<td>${timeout}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${timeout}</td>
+<td>Convert To Integer</td>
+<td>${timeout}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>: FOR</td>
+<td>${tm}</td>
+<td>IN RANGE</td>
+<td>1</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${timeout}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>${status}</td>
+<td>${value} =</td>
+<td>Run Keyword And Ignore Error</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>AppiumLibrary.Element Should Be Enabled</td>
+<td>${locator}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>Run Keyword If</td>
+<td>'${status}' == 'FAIL'</td>
+<td>Exit For Loop</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>Sleep</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Fast Scrolling Down">Fast Scrolling Down</a></td>
+<td>[Arguments]</td>
+<td>${repeat}</td>
+<td>${interval}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Repeat Keyword</td>
+<td>${repeat}</td>
+<td>Swipe</td>
+<td>0.5</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>0.5</td>
+<td>0.5</td>
+<td>0.1</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${interval}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Clear Android Test Env">Clear Android Test Env</a></td>
+<td>Empty Directory</td>
+<td>${SCREENCAST PATH}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Start Screencastor">Start Screencastor</a></td>
+<td>[Arguments]</td>
+<td>${last}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${filename}=</td>
+<td>Set Variable</td>
+<td>${SUITE NAME}-${TEST NAME}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Login Server</td>
+<td>@{Server Account}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>SSHLibrary.Write</td>
+<td>/Users/guanhua.jing/sdk/platform-tools/screencastor.sh "${filename}" ${last}</td>
+<td>INFO</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Stop Screencastor">Stop Screencastor</a></td>
+<td>Read Until</td>
+<td>Done</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>SSHLibrary.Get File</td>
+<td>/Users/guanhua.jing/Desktop/applog/*.mp4</td>
+<td>${OUTPUT DIR}/screencast/</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Force Stop App">Force Stop App</a></td>
+<td>Login Server</td>
+<td>@{Server Account}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>SSHLibrary.Write</td>
+<td>/Users/guanhua.jing/sdk/platform-tools/force_stop_app.sh ${PACKAGE} &amp;</td>
+<td>INFO</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>sleep</td>
+<td>5</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Notifications">Notifications</a></td>
+<td>Wait and Run Keyword</td>
+<td>xpath=//android.widget.Button[@content-desc="OK"]</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Make Random String">Make Random String</a></td>
+<td>[Arguments]</td>
+<td>${pre}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${yyyy}</td>
+<td>${mm}</td>
+<td>${dd}</td>
+<td>${hh}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${min}</td>
+<td>${ss}=</td>
+<td>Get Time</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>year,month,day,hour, min, sec</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${randstr}=</td>
+<td>Set Variable</td>
+<td>${pre}${yyyy}${mm}${dd}${hh}${min}${ss}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Return]</td>
+<td>${randstr}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Get Matching Xpath Count">Get Matching Xpath Count</a></td>
+<td>[Arguments]</td>
+<td>${locator}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${count}=</td>
+<td>Set Variable</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${count}=</td>
+<td>Convert To Integer</td>
+<td>${count}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>: FOR</td>
+<td>${INDEX}</td>
+<td>IN RANGE</td>
+<td>1</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>9999</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>${status}</td>
+<td>${value} =</td>
+<td>Run Keyword And Ignore Error</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>Wait Until Page Contains Element</td>
+<td>${locator}[${INDEX}]</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>Run Keyword If</td>
+<td>'${status}' == 'FAIL'</td>
+<td>Exit For Loop</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>${count}=</td>
+<td>Evaluate</td>
+<td>${count}+1</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Return]</td>
+<td>${count}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_StartAppNoReset">StartAppNoReset</a></td>
+<td>Open Application</td>
+<td>${REMOTE_URL}</td>
+<td>${PLATFORM_NAME}</td>
+<td>${PLATFORM_VERSION}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${DEVICE_NAME}</td>
+<td>${APP}</td>
+<td>${AUTOMATION_NAME}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${PACKAGE}</td>
+<td>${APPACTIVITY}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_StartAppReset">StartAppReset</a></td>
+<td>Open Application</td>
+<td>${REMOTE_URL}</td>
+<td>${PLATFORM_NAME}</td>
+<td>${PLATFORM_VERSION}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${DEVICE_NAME}</td>
+<td>${APP}</td>
+<td>${AUTOMATION_NAME}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${PACKAGE}</td>
+<td>${APPACTIVITY}</td>
+<td>${EMPTY}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${BUNDLEID}</td>
+<td>${UDID}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_StartAppNoReset">StartAppNoReset</a></td>
+<td>AppiumLibrary.Open Application</td>
+<td>${REMOTE_URL}</td>
+<td>${PLATFORM_NAME}</td>
+<td>${PLATFORM_VERSION}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${DEVICE_NAME}</td>
+<td>${APP}</td>
+<td>${AUTOMATION_NAME}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${PACKAGE}</td>
+<td>${APPACTIVITY}</td>
+<td></td>
+</tr>
+</table>
+</body>
+</html>

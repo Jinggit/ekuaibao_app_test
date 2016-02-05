@@ -1,0 +1,434 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+html {
+  font-family: Arial,Helvetica,sans-serif;
+  background-color: white;
+  color: black;
+}
+table {
+  border-collapse: collapse;
+  empty-cells: show;
+  margin: 1em 0em;
+  border: 1px solid black;
+}
+th, td {
+  border: 1px solid black;
+  padding: 0.1em 0.2em;
+  height: 1.5em;
+  width: 12em;
+}
+td.colspan4, th.colspan4 {
+    width: 48em;
+}
+td.colspan3, th.colspan3 {
+    width: 36em;
+}
+td.colspan2, th.colspan2 {
+    width: 24em;
+}
+th {
+  background-color: rgb(192, 192, 192);
+  color: black;
+  height: 1.7em;
+  font-weight: bold;
+  text-align: center;
+  letter-spacing: 0.1em;
+}
+td.name {
+  background-color: rgb(240, 240, 240);
+  letter-spacing: 0.1em;
+}
+td.name, th.name {
+  width: 10em;
+}
+</style>
+<title>Initialization</title>
+</head>
+<body>
+<h1>Initialization</h1>
+<table border="1" id="setting">
+<tr>
+<th class="name" colspan="5">Settings</th>
+</tr>
+<tr>
+<td class="name">Resource</td>
+<td>consume_page_kewords.html</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>AppiumLibrary</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</table>
+<table border="1" id="testcase">
+<tr>
+<th class="name" colspan="5">Test Cases</th>
+</tr>
+<tr>
+<td class="name"><a name="test_Init">Init</a></td>
+<td>[Tags]</td>
+<td>init</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>StartAppReset</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Wait Until Page Contains Element</td>
+<td>//UIAStaticText[@name="让报销成为快事一件"]</td>
+<td>#//android.widget.TextView[@text="让报销成为快事一件"]</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Wait and Run Keyword</td>
+<td>Click Element</td>
+<td>//UIAButton[@name="登 \ \ 录"]</td>
+<td>#//android.widget.TextView[@text="登 录"]</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Wait and Run Keyword</td>
+<td>Input Text Native</td>
+<td>//UIATextField</td>
+<td>19930366339</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>#//android.widget.LinearLayout[android.widget.TextView[@text="手机号"]]/android.widget.EditText</td>
+<td>#13718470010</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Wait and Run Keyword</td>
+<td>Input Text Native</td>
+<td>//UIASecureTextField</td>
+<td>123456</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>#//android.widget.LinearLayout[android.widget.TextView[@text="密　码"]]/android.widget.EditText</td>
+<td>#123456</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Wait and Run Keyword</td>
+<td>Click Element</td>
+<td>//UIAButton[@name="登 \ \ \ \ \ \ 录"]</td>
+<td>#//android.widget.TextView[@text="登 录"]</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>SleepApp</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Run Keyword And Ignore Error</td>
+<td>Wait and Run Keyword</td>
+<td>Click Element</td>
+<td>//UIAStaticText[@name="一会再看"]</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>#//android.widget.TextView[@text="一会再看"]</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>Run Keyword And Ignore Error</td>
+<td>Wait and Run Keyword</td>
+<td>Click Element</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>//UIAStaticText[@name="取消"]</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Wait Until Page Contains Element</td>
+<td>//UIAStaticText[@name="易快报"]</td>
+<td>#//android.widget.TextView[@text="易快报"]</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Wait and Run Keyword</td>
+<td>Click Element</td>
+<td>//UIAButton[@name="home add"]</td>
+<td>#//android.widget.ImageView[@resource-id="${PACKAGE}:id/imageview_add"]</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Wait and Run Keyword</td>
+<td>Click Element</td>
+<td>//UIAButton[@name="home editBtn"]</td>
+<td>#//android.widget.TextView[@text="添加消费记录"]</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Wait and Run Keyword</td>
+<td>Click Element</td>
+<td>//UIAStaticText[@name="点击编辑"]</td>
+<td>#//android.widget.TextView[@resource-id="${PACKAGE}:id/money"]</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Run Keyword And Ignore Error</td>
+<td>Wait and Run Keyword</td>
+<td>Click Element</td>
+<td>//UIAStaticText[@name="知道了"]</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Wait and Run Keyword</td>
+<td>Click Element</td>
+<td>//UIAStaticText[@name="长途"]</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>Click Feetype</td>
+<td>//UIAScrollView[1]</td>
+<td>//UIAPageIndicator</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>长途</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Calc Input</td>
+<td>1,2,.,0,0</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Wait and Run Keyword</td>
+<td>Click Element</td>
+<td>//UIAButton[@name="完成"]</td>
+<td>#//android.widget.TextView[@text="完成"]</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Wait and Run Keyword</td>
+<td>Click Element</td>
+<td>//UIAImage[@name="takePicture"]</td>
+<td>#//android.widget.ImageView[@resource-id="${PACKAGE}:id/select_pic"]</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Wait and Run Keyword</td>
+<td>Click Element</td>
+<td>//UIAButton[@name="从相册中选择"]</td>
+<td>#//android.widget.TextView[@text="从相册中选择"]</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Wait and Run Keyword</td>
+<td>Click Element</td>
+<td>//UIATableCell[1]</td>
+<td>#xpath=(//android.widget.ImageView[@resource-id="${PACKAGE}:id/id_item_image"])[1]</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Wait and Run Keyword</td>
+<td>Click Element</td>
+<td>//UIACollectionCell[1]</td>
+<td>#//android.widget.ImageView[@resource-id="${PACKAGE}:id/imageview_right"]</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Wait and Run Keyword</td>
+<td>Click Element</td>
+<td>//UIANavigationBar[1]/UIAButton[3]</td>
+<td>#//android.widget.TextView[@text="完成"]</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Wait Until Element Disappeared</td>
+<td>//UIAImage[@name="record_upload_error"]</td>
+<td>${TIMEOUT}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${consume_desc}=</td>
+<td>Make Random String</td>
+<td>${EMPTY}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Wait and Run Keyword</td>
+<td>Click Element</td>
+<td>//UIAStaticText[@name="添加描述.."]</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Wait and Run Keyword</td>
+<td>Input Text Native</td>
+<td>//UIATextView</td>
+<td>${consume_desc}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Wait and Run Keyword</td>
+<td>Click Element</td>
+<td>//UIAButton[@label="完成"][2]</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Wait and Run Keyword</td>
+<td>Click Element</td>
+<td>//UIAImage[@name="commitButton_enabled"]</td>
+<td>#//android.widget.ImageView[@resource-id="${PACKAGE}:id/save_consumption"]</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Run Keyword And Ignore Error</td>
+<td>Wait and Run Keyword</td>
+<td>Click Element</td>
+<td>//UIAStaticText[@name="一会再看"]</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>Run Keyword And Ignore Error</td>
+<td>Wait and Run Keyword</td>
+<td>Click Element</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>//UIAStaticText[@name="取消"]</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Wait Until Page Contains Element</td>
+<td>//UIAStaticText[contains(@name,"${consume_desc}")]</td>
+<td>${TIMEOUT}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Wait and Run Keyword</td>
+<td>Click Element</td>
+<td>//UIAStaticText[contains(@name,"${consume_desc}")]</td>
+<td>#//android.widget.TextView[contains(@text,"${consume_desc}")]</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Wait and Run Keyword</td>
+<td>Click Element</td>
+<td>//UIAButton[@name="ic delete"]</td>
+<td>#//android.widget.ImageView[@resource-id="${PACKAGE}:id/imageview_right_mid"]</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Wait and Run Keyword</td>
+<td>Click Element</td>
+<td>//UIAButton[@name="确定"]</td>
+<td>#//android.widget.TextView[@text="确定"]</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Scroll Until Element Visiable</td>
+<td>//UIAStaticText[contains(@name,"201512150607")]</td>
+<td>10</td>
+<td>5</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>Run Keyword And Ignore Error</td>
+<td>Wait and Run Keyword</td>
+<td>Click Element</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>//UIAStaticText[@name="取消"]</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>Close Application</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_Sandbox">Sandbox</a></td>
+<td>[Tags]</td>
+<td>stage</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>StartAppReset</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>Close Application</td>
+<td></td>
+<td></td>
+</tr>
+</table>
+</body>
+</html>
