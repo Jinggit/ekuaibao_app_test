@@ -1,0 +1,26 @@
+*** Settings ***
+Resource          all_pages_keywords.txt
+
+*** Test Cases ***
+sigin negative
+    [Tags]
+    [Template]    sigin negtive template
+    ${EMPTY}    ${EMPTY}    请输入手机号
+    ${MEMBER_ADMIN_ACCOUNT}    ${EMPTY}    请输入密码
+    ${MEMBER_ADMIN_ACCOUNT}    111222    登录失败
+    13800001000    123456    登录失败
+
+Sandbox
+    [Tags]    stage
+    ${jiasd}=    Remove String Using Regexp    assa (30 )    \\D
+
+*** Keywords ***
+sigin negtive template
+    [Arguments]    ${username}    ${password}    ${message}
+    StartAppReset
+    Wait Until Page Contains    让报销成为快事一件
+    Make Thread Take Multiple Screenshots    ${OCR_CIRCLE}    ${OCR_PIC_LOCATION}    0.2    10
+    Login    ${username}    ${password}
+    ${status}    ${value}=    Run Keyword And Ignore Error    Wait Until Page Contains    ${message}
+    Run Keyword If    '${status}' == 'FAIL'    Toast Message Should Be    ${message}
+    [Teardown]    Close Application Without Screenshot Comparison

@@ -5,6 +5,7 @@ Library           String
 Library           OperatingSystem
 Library           Comp_img
 Library           DateTime
+Library           Collections
 
 *** Keywords ***
 Wait and Run Keyword
@@ -183,15 +184,19 @@ Create And Clear Test Evn
     Create Directory    ${IMAGE DIFF PATH}
     Create Directory    ${IMAGE ORIGINAL PATH}
     Create Directory    ${IMAGE NEW PATH}
+    Create Directory    ${OCR_PIC_LOCATION}
     Empty Directory    ${IMAGE TEMP PATH}
     Empty Directory    ${IMAGE DIFF PATH}
     Empty Directory    ${IMAGE NEW PATH}
+    Empty Directory    ${OCR_PIC_LOCATION}
     Remove Files    ${OUTPUT DIR}${/}appium-screenshot*.png
 
 Close Application Without Screenshot Comparison
     [Documentation]    Close the browser and compare the screenshot.
+    Run Keyword And Ignore Error    Remove Application    io.appium.android.ime
     Close Application
     Empty Directory    ${IMAGE TEMP PATH}
+    Empty Directory    ${OCR_PIC_LOCATION}
 
 Close Application and Screenshot Comparison
     [Documentation]    Close the browser and compare the screenshot.
@@ -254,7 +259,7 @@ App Upgrade
 
 Click Text
     [Arguments]    ${text}
-    Run Keyword If    '${PLATFORM_NAME}' == 'Android'    Wait and Run Keyword    Click Element    //android.widget.TextView[@text="${text}"]
+    Run Keyword If    '${PLATFORM_NAME}' == 'Android'    Wait and Run Keyword    Click Element    //android.widget.TextView[contains(@text,"${text}")]
 
 Click Text Button
     [Arguments]    ${text}
@@ -281,3 +286,15 @@ Get Content By ID
     [Arguments]    ${id}
     ${value}=    Run Keyword If    '${PLATFORM_NAME}' == 'Android'    Get Statictext Value    //*[@resource-id="${PACKAGE}:id/${id}"]
     [Return]    ${value}
+
+Toast Message Should Be
+    [Arguments]    ${message}
+    ${status}=    Recognize Toast Text On Multiple Screenshots    ${OCR_CIRCLE}    ${OCR_PIC_LOCATION}    ${message}
+    Should Be Equal    ${status}    True
+    [Teardown]    #Empty Directory    ${OCR_PIC_LOCATION}
+
+Click Save Icon
+    Wait and Run Keyword    Click Element    //android.widget.ImageView[@resource-id="${PACKAGE}:id/imageview_right_left"]
+
+Take Screenshot For Toast Message Verification
+    Make Thread Take Multiple Screenshots    ${OCR_CIRCLE}    ${OCR_PIC_LOCATION}    0.2    3

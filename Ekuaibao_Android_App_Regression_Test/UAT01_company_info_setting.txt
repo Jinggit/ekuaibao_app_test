@@ -14,7 +14,7 @@ modify company info
     Click My Company
     Click Edit My Company Info    北京合思有限公司    13718470010    40088888888    北京王府井大街六马路
     Company Name Should Be    北京合思有限公司
-    Company ID Should Be    ID：vbvbbgghhf
+    Company ID Should Be    k8tdk4y595
     Company Phone Should Be    13718470010
     Company Fax Should Be    40088888888
     Company Address Should Be    北京王府井大街六马路

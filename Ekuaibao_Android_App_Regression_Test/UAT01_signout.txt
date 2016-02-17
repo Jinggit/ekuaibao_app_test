@@ -2,8 +2,8 @@
 Resource          all_pages_keywords.txt
 
 *** Test Cases ***
-check full company info
-    [Tags]    init
+signout
+    [Tags]
     StartAppReset
     Wait Until Page Contains    让报销成为快事一件
     Login    ${MEMBER_ADMIN_ACCOUNT}    ${MEMBER_ADMIN_PASSWORD}
@@ -11,15 +11,9 @@ check full company info
     App Upgrade
     Wait Until Page Contains    易快报
     Click Setting Button
-    Click My Company
-    Close Company
-    Confirmation Cancel
-    Company Name Should Be    北京合思有限公司
-    Company ID Should Be    ID：vbvbbgghhf
-    Company Phone Should Be    13718470010
-    Company Fax Should Be    40088888888
-    Company Address Should Be    北京王府井大街六马路
-    [Teardown]    Close Application and Screenshot Comparison
+    Click Config
+    Sign Out
+    Wait Until Page Contains    让报销成为快事一件
 
 Sandbox
     [Tags]    stage

@@ -1,0 +1,78 @@
+*** Settings ***
+Resource          all_pages_keywords.txt
+
+*** Test Cases ***
+add payment account
+    [Tags]    init
+    StartAppReset
+    Wait Until Page Contains    让报销成为快事一件
+    Login    ${MEMBER_ADMIN_ACCOUNT}    ${MEMBER_ADMIN_PASSWORD}
+    Read Later
+    App Upgrade
+    Wait Until Page Contains    易快报
+    Click Setting Button
+    Click Config
+    Click User Info
+    Click Payment Info Setting
+    ${cno}=    Add Payment Info    对公账户    景冠华    ${BANK_CARD_FOR_ADD_TEST}    沈阳北行分行    ${EMPTY}
+    Set Payment Info As Default    ${cno}
+    Verify Default Payment Card    ${cno}
+    [Teardown]    Close Application and Screenshot Comparison
+
+Sandbox
+    [Tags]    stage
+    ${keycode}=    Create Dictionary    0=7    1=8    2=9    3=10    4=11
+    ...    5=12    6=13    7=14    8=15    9=16    ${SPACE}=62
+
+set default payment account
+    [Tags]    init
+    StartAppReset
+    Wait Until Page Contains    让报销成为快事一件
+    Login    ${MEMBER_ADMIN_ACCOUNT}    ${MEMBER_ADMIN_PASSWORD}
+    Read Later
+    App Upgrade
+    Wait Until Page Contains    易快报
+    Click Setting Button
+    Click Config
+    Click User Info
+    Click Payment Info Setting
+    ${cno}=    Set Variable    ${BANK_CARD_FOR_SETDEFAULT_TEST}
+    Set Payment Info As Default    ${cno}
+    Verify Default Payment Card    ${cno}
+    [Teardown]    Close Application and Screenshot Comparison
+
+delete payment account
+    [Tags]    init
+    StartAppReset
+    Wait Until Page Contains    让报销成为快事一件
+    Login    ${MEMBER_ADMIN_ACCOUNT}    ${MEMBER_ADMIN_PASSWORD}
+    Read Later
+    App Upgrade
+    Wait Until Page Contains    易快报
+    Click Setting Button
+    Click Config
+    Click User Info
+    Click Payment Info Setting
+    Delete Payment Info    ${BANK_CARD_FOR_ADD_TEST}
+    Page Should Not Contain Text    ${BANK_CARD_FOR_ADD_TEST}
+    [Teardown]    Close Application and Screenshot Comparison
+
+add duplicated payment account
+    [Tags]    init
+    StartAppReset
+    Wait Until Page Contains    让报销成为快事一件
+    Login    ${MEMBER_ADMIN_ACCOUNT}    ${MEMBER_ADMIN_PASSWORD}
+    Read Later
+    App Upgrade
+    Wait Until Page Contains    易快报
+    Click Setting Button
+    Click Config
+    Click User Info
+    Click Payment Info Setting
+    ${cno}=    Add Payment Info    对公账户    景冠华    ${BANK_CARD_FOR_ADD_DUPLICATE_TEST}    沈阳北行分行    ${EMPTY}
+    Add Payment Info    对公账户    景冠华    ${BANK_CARD_FOR_ADD_DUPLICATE_TEST}    沈阳北行分行    已绑定此银行卡
+    Confirmation Yes
+    Click Back
+    [Teardown]    Close Application and Screenshot Comparison
+
+*** Keywords ***

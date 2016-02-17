@@ -26,10 +26,12 @@ Click Config
     Click Text    设置
 
 Get User Department
+    Get Source
     ${user_department}=    Get Statictext Value    //android.widget.TextView[@resource-id="${PACKAGE}:id/user_department"]
     [Return]    ${user_department}
 
 Get Username
+    Get Source
     ${username}=    Get Statictext Value    //android.widget.TextView[@resource-id="${PACKAGE}:id/username"]
     [Return]    ${username}
 
@@ -136,7 +138,7 @@ Get Username Of Personal Info Edit
 
 Edit Username Of Personal Info Edit
     [Arguments]    ${username}
-    Wait and Run Keyword    Input Text Native    //android.widget.EditText[@resource-id="${PACKAGE}:id/username"]    ${username}
+    Wait and Run Keyword    Input Text    //android.widget.EditText[@resource-id="${PACKAGE}:id/username"]    ${username}
 
 Change Userphone
     [Arguments]    ${current_user_password}
@@ -175,42 +177,46 @@ Get Email Of Personal Info Edit
 
 Change NIckname Of Personal Info Edit
     [Arguments]    ${nickname}
-    Wait and Run Keyword    Input Text Native    //android.widget.EditText[@resource-id="${PACKAGE}:id/nickname"]    ${nickname}
+    Wait and Run Keyword    Input Text    //android.widget.EditText[@resource-id="${PACKAGE}:id/nickname"]    ${nickname}
 
 Change Email Of Personal Info Edit
     [Arguments]    ${email}
-    Wait and Run Keyword    Input Text Native    //android.widget.EditText[@resource-id="${PACKAGE}:id/edtcompfax"]    ${email}
+    Wait and Run Keyword    Input Text    //android.widget.EditText[@resource-id="${PACKAGE}:id/edtcompfax"]    ${email}
 
 Click Payment Info Setting
     Click Text    设置收款信息>
 
 Add Payment Info
-    [Arguments]    ${type}    ${name}    ${cardno}    ${bank_branch}
+    [Arguments]    ${type}    ${name}    ${cardno}    ${bank_branch}    ${message}
+    Comment    ${cardno}=    Replace String    ${cardno}    ${SPACE}    ${EMPTY}
     Click Text    添加收款人
     Run Keyword If    '${type}' == '个人账户'    Click Text    个人账户
     ...    ELSE    Click Text    对公账户
-    Wait and Run Keyword    Input Text Native    //android.widget.EditText[@resource-id="${PACKAGE}:id/cardPersonName"]    ${name}
-    Wait and Run Keyword    Input Text Native    //android.widget.EditText[@resource-id="${PACKAGE}:id/cardId"]    ${cardno}
-    Wait and Run Keyword    Input Text Native    //android.widget.EditText[@resource-id="${PACKAGE}:id/bank_lattice_point"]    ${bank_branch}
+    Input Bank Card Number Under Android    //android.widget.EditText[@resource-id="${PACKAGE}:id/cardId"]    ${cardno}
+    ${cno}=    Get Statictext Value    //android.widget.EditText[@resource-id="${PACKAGE}:id/cardId"]
+    Wait and Run Keyword    Input Text    //android.widget.EditText[@resource-id="${PACKAGE}:id/cardPersonName"]    ${name}
+    Wait and Run Keyword    Input Text    //android.widget.EditText[@resource-id="${PACKAGE}:id/bank_lattice_point"]    ${bank_branch}
     Click Save Payment Info Button
+    Wait Until Page Contains    ${message}
+    [Return]    ${cno}
 
 Set Payment Info As Default
     [Arguments]    ${cardno}
-    Swipe Up Element Until Element Visiable    //android.widget.FrameLayout[@resource-id="${PACKAGE}:id/list_frame"]    //android.widget.TextView[@text="${cardno}"]    99    1
-    Swipe Element Horizontal From Right Hybrid    //android.widget.TextView[@text="${cardno}"]
+    Swipe Up Element Until Element Visiable    //android.widget.FrameLayout[@resource-id="${PACKAGE}:id/list_frame"]    //android.widget.TextView[contains(@text,"${cardno}")]    99    1
+    Swipe Element Horizontal From Right Hybrid    //android.widget.TextView[contains(@text,"${cardno}")]
     Click Text    设为默认
     ${default_value}=    Get Statictext Value    //*[android.widget.TextView[contains(@text,"${cardno}")]]/android.widget.TextView[@resource-id="${PACKAGE}:id/tv_default"]
     Should Be Equal    ${default_value}    默认
 
 Delete Payment Info
     [Arguments]    ${cardno}
-    Swipe Up Element Until Element Visiable    //android.widget.FrameLayout[@resource-id="${PACKAGE}:id/list_frame"]    //android.widget.TextView[@text="${cardno}"]    99    1
-    Swipe Element Horizontal From Right Hybrid    //android.widget.TextView[@text="${cardno}"]
+    Swipe Up Element Until Element Visiable    //android.widget.FrameLayout[@resource-id="${PACKAGE}:id/list_frame"]    //android.widget.TextView[contains(@text,"${cardno}")]    99    1
+    Swipe Element Horizontal From Right Hybrid    //android.widget.TextView[contains(@text,"${cardno}")]
     Click Text    删除
-    Click Text    删除
+    Click Element By Element ID    done
 
 Click Save Payment Info Button
-    Wait and Run Keyword    Click Element    //android.widget.ImageView[@resource-id="${PACKAGE}:id/imageview_right_mid"]
+    Wait and Run Keyword    Click Element    //android.widget.ImageView[@resource-id="${PACKAGE}:id/imageview_right_left"]
 
 Company Name Should Be
     [Arguments]    ${name}
@@ -239,3 +245,48 @@ Company Address Should Be
 
 Close Company
     Click Text    解散企业
+
+Click User Info
+    Click Element By Element ID    user_info
+
+SIgn Out
+    Click Text    退出登录
+    Click Text    退出登录
+
+Input Bank Card Number
+    [Arguments]    ${locator}    ${num_string}
+    ${keycode}=    Create Dictionary    0=7    1=8    2=9    3=10    4=11
+    ...    5=12    6=13    7=14    8=15    9=16    S=62
+    Wait and Run Keyword    Click Element    ${locator}
+    ${num_list}=    Replace String    ${num_string}    ${SPACE}    S
+    @{nlist}    Split String To Characters    ${num_list}
+    : FOR    ${num}    IN    @{nlist}
+    \    ${knum}=    Get From Dictionary    ${keycode}    ${num}
+    \    ${num}=    Convert To Integer    ${knum}
+    \    Press Keycode    ${num}
+    \    Sleep    3
+
+Input Bank Card Number Under Android
+    [Arguments]    ${locator}    ${cardno}
+    Close Android Input Method
+    Wait and Run Keyword    Input Text    ${locator}    ${cardno}
+    Open Android Input Method
+
+Verify Default Payment Card
+    [Arguments]    ${cno}
+    ${status}=    Get Statictext Value    //*[android.widget.TextView[contains(@text,"${cno}")]]/android.widget.TextView[@resource-id="${PACKAGE}:id/tv_default"]
+    Should Be Equal    默认    ${status}
+
+Change Password
+    [Arguments]    ${old}    ${new}
+    Click Text    修改密码
+    Input Text By Element ID    edit_phone    ${old}
+    Input Text By Element ID    edit_code    ${new}
+    Click Element By Element ID    login
+
+Switch Privillege
+    Click Element By Element ID    switch_system_admin
+    Click Element By Element ID    switch_person_admin
+    Click Element By Element ID    switch_final_persion_admin
+    Click Element By Element ID    switch_account_admin
+    Click Element By Element ID    switch_financial_admin

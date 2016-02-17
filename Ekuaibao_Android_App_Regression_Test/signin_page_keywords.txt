@@ -10,5 +10,3 @@ Login
     Wait and Run Keyword    Input Text Native    //android.widget.LinearLayout[android.widget.TextView[@text="手机号"]]/android.widget.EditText    ${mobile}
     Wait and Run Keyword    Input Text Native    //android.widget.LinearLayout[android.widget.TextView[@text="密　码"]]/android.widget.EditText    ${password}
     Wait and Run Keyword    Click Element    //android.widget.TextView[@text="登 录"]
-    SleepApp
-

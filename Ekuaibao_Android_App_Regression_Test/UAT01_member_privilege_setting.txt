@@ -2,41 +2,79 @@
 Resource          all_pages_keywords.txt
 
 *** Test Cases ***
-Init
+change personal info
     [Tags]    init
     StartAppReset
-    Wait Until Page Contains Element    //android.widget.TextView[@text="让报销成为快事一件"]
-    PartialSnapshot    //android.widget.TextView[@text="让报销成为快事一件"]
-    Login    19930366339    123456    #13718470010
+    Wait Until Page Contains    让报销成为快事一件
+    Login    ${MEMBER_ADMIN_ACCOUNT}    ${MEMBER_ADMIN_PASSWORD}
     Read Later
-    Confirmation Cancel
-    Wait Until Page Contains Element    //android.widget.TextView[@text="易快报"]
-    Click Add Button
-    Click Add Consumption Button
-    Edit Comsumption
-    SleepApp
-    Snapshot
-    PartialSnapshot    //android.support.v4.view.ViewPager[@resource-id="${PACKAGE}:id/viewPager"]
-    Click Feetype    //android.support.v4.view.ViewPager[@resource-id="${PACKAGE}:id/viewPager"]    //android.widget.LinearLayout[@resource-id="${PACKAGE}:id/viewGroup"]/android.widget.ImageView    住宿
-    Input Consumption Value    1,2,.,0,0,-,1,=
-    Select Date Range    //android.widget.ListView    2016    1    15    2016    1
-    ...    20
-    Click Select Pictures Icon
-    Select Pictures From Allum    2
-    Wait Utill Image Loading Icon disappers
-    ${consume_desc}=    Make Random String    ${EMPTY}
-    Describe Consumption    ${consume_desc}
-    Click Concumption Save Icon
-    Confirmation Cancel
-    Scroll Down Until Element Visiable    //android.widget.TextView[contains(@text,"${consume_desc}")]    20    1
-    Delete Consumption Via Consume Description    ${consume_desc}
-    Scroll Down Until Element Visiable    //android.widget.TextView[contains(@text,"201512150607")]    10    5
-    Confirmation Cancel
+    App Upgrade
+    Wait Until Page Contains    易快报
+    Click Setting Button
+    Click My Company
+    Click Text    成员
+    Click Text    ${MEMBER_ADMIN_FULLNAME}
+    Wait Until Page Contains    ${MEMBER_ADMIN_FULLNAME}
+    Wait Until Page Contains    ${MEMBER_ADMIN_NICKNAME}
+    Wait Until Page Contains    ${MEMBER_ADMIN_DEPARTMENT}
+    Wait Until Page Contains    ${MEMBER_ADMIN_ACCOUNT}
+    Wait Until Page Contains    ${MEMBER_ADMIN_EMAIL}
+    Click Edit Member Info Icon
+    Edit Username Of Personal Info Edit    ${MEMBER_ADMIN_FULLNAME}
+    Change Department Of Personal Info Edit    ${MEMBER_ADMIN_DEPARTMENT}
+    Change Email Of Personal Info Edit    ${MEMBER_ADMIN_EMAIL}
+    Change NIckname Of Personal Info Edit    ${MEMBER_ADMIN_NICKNAME}
+    Comment    Change Userphone
+    Click Save Icon
+    Wait Until Page Contains    ${MEMBER_ADMIN_FULLNAME}
+    Wait Until Page Contains    ${MEMBER_ADMIN_NICKNAME}
+    Wait Until Page Contains    ${MEMBER_ADMIN_DEPARTMENT}
+    Wait Until Page Contains    ${MEMBER_ADMIN_ACCOUNT}
+    Wait Until Page Contains    ${MEMBER_ADMIN_EMAIL}
     [Teardown]    Close Application and Screenshot Comparison
 
 Sandbox
     [Tags]    stage
     ${jiasd}=    Remove String Using Regexp    assa (30 )    \\D
 
-*** Keywords ***
+change privilege
+    [Tags]    init
+    StartAppReset
+    Wait Until Page Contains    让报销成为快事一件    ${TIMEOUT}
+    Login    ${MEMBER_ADMIN_ACCOUNT}    ${MEMBER_ADMIN_PASSWORD}
+    Read Later
+    App Upgrade
+    Wait Until Page Contains    易快报    ${TIMEOUT}
+    Click Setting Button
+    Click My Company
+    Click Text    成员
+    Click Text    ${MEMBER_ADMIN_FULLNAME}
+    Click Edit Privilege
+    Click Element By Element ID    switch_person_admin
+    Click Element By Element ID    switch_final_persion_admin
+    Click Element By Element ID    switch_account_admin
+    Click Element By Element ID    switch_financial_admin
+    Click Text    确定
+    Wait Until Page Contains    系统管理员
+    Wait Until Page Contains    成员管理员
+    Wait Until Page Contains    终审人
+    Wait Until Page Contains    出纳
+    Wait Until Page Contains    账表管理员
+    Click Edit Privilege
+    Click Element By Element ID    switch_system_admin
+    Click Text    确定
+    Wait Until Page Contains    不能修改自己的系统管理员权限    ${TIMEOUT}
+    Click Text    确定
+    Click Edit Privilege
+    Click Element By Element ID    switch_person_admin
+    Click Element By Element ID    switch_final_persion_admin
+    Click Element By Element ID    switch_account_admin
+    Click Element By Element ID    switch_financial_admin
+    Click Text    确定
+    Wait Until Element Disappeared    switch_person_admin    ${TIMEOUT}
+    Wait Until Element Disappeared    switch_final_persion_admin    ${TIMEOUT}
+    Wait Until Element Disappeared    switch_account_admin    ${TIMEOUT}
+    Wait Until Element Disappeared    switch_financial_admin    ${TIMEOUT}
+    [Teardown]    Close Application and Screenshot Comparison
 
+*** Keywords ***
